@@ -1,0 +1,11 @@
+Non so ancora come imposteremo gli oggetti e a che serva ficcare i GameObjects gli uni negli altri per creare dei figli, ma penso che lo scopriremo vivendo.
+
+Piano stupido:
+ci sono alcune entità principali, un giocatore (Player), le guardie (Guard), gli abitanti della città (Peasant), gli edifici che costituiscono i punti di interesse e di incontro di cospiratori e persone normali (Building). Ho creato anche un oggettino strada (Road) con l'intenzione di sfruttarlo più avanti per realizzare dei percorsi un minimo coerenti per i personaggi che si muovono.
+
+In merito alle strade:
+Sto meditando di sfruttarle ponendo su di esse dei "punti di ancoraggio", ossia fissarci dei punti di coordinate specifiche che i personaggi non giocanti possano seguire nei loro movimenti casuali senza schiantarsi sugli edifici o attraversare gli ostacoli.
+
+Obiettivi di implementazione:
+- riuscire a creare un sistema per cui si può selezionare un'entità
+- se si clicca in un punto della mappa, l'ultima entità selezionata ci si sposta (inizialmente senza seguire punti di ancoraggio)
