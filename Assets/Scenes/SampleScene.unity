@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 737392270}
   - component: {fileID: 737392271}
   m_Layer: 0
-  m_Name: Square (5)
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 812047153}
   - component: {fileID: 812047154}
   m_Layer: 0
-  m_Name: Square (4)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 1287141378}
   - component: {fileID: 1287141379}
   m_Layer: 0
-  m_Name: Square (3)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 1557163901}
   - component: {fileID: 1557163902}
   m_Layer: 0
-  m_Name: Square (2)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 1788997046}
   - component: {fileID: 1788997047}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 1821906059}
   - component: {fileID: 1821906060}
   m_Layer: 0
-  m_Name: Square
+  m_Name: 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +949,7 @@ GameObject:
   - component: {fileID: 1825506426}
   - component: {fileID: 1825506425}
   m_Layer: 0
-  m_Name: Triangle (7)
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1061,7 +1061,7 @@ Transform:
   m_GameObject: {fileID: 1825506423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 0.92, z: 0}
+  m_LocalPosition: {x: -0.03, y: 3.37, z: 0}
   m_LocalScale: {x: 1.5518494, y: 1.270362, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1080,7 +1080,7 @@ GameObject:
   - component: {fileID: 2005558024}
   - component: {fileID: 2005558026}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: PNG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,13 +1166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4f05ef1039f2148a9a1fb90185bfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 2
-  waypoints:
-  - {fileID: 1821906059}
-  - {fileID: 1788997046}
-  - {fileID: 1287141378}
-  - {fileID: 812047153}
-  - {fileID: 737392270}
+  velocity: 4
+  waypointContainer: {fileID: 1187694156}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
