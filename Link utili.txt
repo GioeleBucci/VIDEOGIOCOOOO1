@@ -6,3 +6,8 @@ https://docs.unity3d.com/560/Documentation/Manual/ControllingGameObjectsComponen
 Altra guida leggera su children and parent objects in Unity:
 
 https://www.studytonight.com/game-development-in-2D/parenting-game-objects
+
+
+Pattern Observer in Unity:
+
+https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern
