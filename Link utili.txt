@@ -1,0 +1,8 @@
+Alcune nozioni di base su componenti ed oggetti in Unity, c'è anche un discorso sui Waypoints che può interessare a Gioele:
+
+https://docs.unity3d.com/560/Documentation/Manual/ControllingGameObjectsComponents.html#:~:text=Linking%20objects%20together%20with%20variables,editor%20rather%20than%20at%20runtime.
+
+
+Altra guida leggera su children and parent objects in Unity:
+
+https://www.studytonight.com/game-development-in-2D/parenting-game-objects

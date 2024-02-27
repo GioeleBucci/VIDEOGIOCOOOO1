@@ -3,29 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/* TODO: piangere
+ Ecco un link con alcune delle idee su quali potrebbero essere delle brutte pratiche
+in Unity: https://www.reddit.com/r/Unity3D/comments/9yg57s/what_are_some_bad_practices_to_avoid_when_using/
+ */
 public class Player : MonoBehaviour, IClickable
 {
-    public bool selected;
+    [SerializeField] private List<IClickListener> clickListeners;
+    public Transform GetTransform() => this.transform;
+
     /*
-     private FiniteStateMachine ... -> a state machine with two states to begin with: "Moving" and "Still"
-     */
+private FiniteStateMachine ... -> a state machine with two states to begin with: "Moving" and "Still"
+*/
+    public Player()
+    {
+        this.clickListeners = new List<IClickListener>();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        this.selected = !this.selected;
-        if (this.selected)
+        foreach (var listener in this.clickListeners) 
         {
-            // If the player is selected, make it available to the component
-            // responsible of his movement
-
-            /* SelectionManager.notify("this object was clicked") ... */
+            listener.Notify(this, eventData);
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        this.selected = false;
+        // I want to add the Click Manager as a listener :'(
+        //this.clickListeners.Add();
     }
 
     // Update is called once per frame

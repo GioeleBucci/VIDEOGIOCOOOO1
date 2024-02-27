@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Peasant
   - Guard
+  - ClickManager
   layers:
   - Default
   - TransparentFX

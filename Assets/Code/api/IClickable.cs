@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 /*
@@ -6,5 +7,6 @@ terrain tiles should implement this interface.
  */
 public interface IClickable : IPointerClickHandler
 {
+    Transform GetTransform();
 }
 
