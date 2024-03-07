@@ -31,11 +31,16 @@ public class ClickManager : MonoBehaviour
     /// of this object. If the clicked entity was already selected, it is now deselected.</param>
     public void Notify(IClickable clickedEntity)
     {
+        // if the player clicks twice on the same entity, it should be deselected
         if (this.isAnEntitySelected && this.selectedEntity.Equals(clickedEntity))
         {
             Debug.Log("Deselected entity: " + clickedEntity);
             this.Deselect().OnDeselection();
             return;
+        } // if the player clicks on an entity while another one is already selected:
+        else if (this.isAnEntitySelected /* and the newly selected entity is not a position on the world map...*/)
+        {
+            this.Deselect().OnDeselection();
         }
         Debug.Log("Clicked at position: " + clickedEntity.GetTransform().position + ", clickedEntity.Type = " + clickedEntity.GetType());
         this.selectedEntity = clickedEntity;
