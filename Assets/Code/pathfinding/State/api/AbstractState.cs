@@ -1,4 +1,5 @@
-public abstract class AbstractState : State {
-    public abstract void OnStateEnter(StateManager entity);
-    public abstract void UpdateState(StateManager entity);
+public abstract class AbstractState : State
+{
+    public abstract void OnStateEnter(AbstractStateManager entity);
+    public abstract void UpdateState(AbstractStateManager entity);
 }

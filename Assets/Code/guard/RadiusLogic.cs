@@ -17,7 +17,7 @@ public class RadiusLogic : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Peasant")) {
-            Debug.Log("Collision with " + collision.gameObject.name + " detected");
+            Debug.Log("Collision with " + collision.gameObject.name + " detectedddddd");
         }
     }
 }
