@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -9,37 +10,48 @@ using UnityEngine.UIElements;
  When a second click occurs, it checks wether a suitable position was clicked
  and creates a vector that the selected entity tries to follow.
  */
-public class ClickManager : MonoBehaviour, IClickListener
+public class ClickManager : MonoBehaviour
 {
-    [SerializeField] private Vector2 _movementVector;
-    [SerializeField] private IClickable selectedEntity;
-    [SerializeField] private bool isAnEntitySelected = false;
-    [SerializeField] private Transform clickedEntityTransform;
+    // for now movement vector should not be used, since the click manager might have to deal with
+    // different entities.
+    [SerializeField] Vector2 _movementVector;
+    [SerializeField] IClickable selectedEntity;
+    [SerializeField] bool isAnEntitySelected;
+    [SerializeField] Transform clickedEntityTransform;
     public Vector2 MovementVector { get { return this._movementVector; } }
 
-    public void Notify(IClickable clickedEntity, PointerEventData clickEvent)
+    public IClickable GetSelectedEnetity() => this.selectedEntity;
+
+    public void Notify(IClickable clickedEntity)
     {
-        Debug.Log("Clicked at position: " + clickEvent.position + ", clickedEntity.Type = " + clickedEntity.GetType());
-        if (!this.isAnEntitySelected)
+        if (this.isAnEntitySelected && this.selectedEntity.Equals(clickedEntity))
         {
-            this.selectedEntity = clickedEntity;
-            this.isAnEntitySelected = true;
-            this.clickedEntityTransform = clickedEntity.GetTransform();
+            Debug.Log("Deselected entity: " + clickedEntity);
+            this.Deselect().OnDeselection();
+            return;
         }
-        else
+        Debug.Log("Clicked at position: " + clickedEntity.GetTransform().position + ", clickedEntity.Type = " + clickedEntity.GetType());
+        this.selectedEntity = clickedEntity;
+        this.isAnEntitySelected = true;
+        this.clickedEntityTransform = clickedEntity.GetTransform();
+        clickedEntity.OnSelection();
+    }
+
+    private IClickable Deselect()
+    {
+        if (this.isAnEntitySelected)
         {
-            this._movementVector = new Vector2(clickEvent.position.x - this.clickedEntityTransform.position.x,
-                                              clickEvent.position.y - this.clickedEntityTransform.position.y);
-            Debug.Log("Entity: " + clickedEntity + "selected, moving to: " + _movementVector);
             this.isAnEntitySelected = false;
-            this.selectedEntity = null;
         }
+        IClickable entity = this.selectedEntity;
+        this.selectedEntity = null;
+        return entity;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        this.isAnEntitySelected = false;
     }
 
     // Update is called once per frame
