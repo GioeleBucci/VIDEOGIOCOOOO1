@@ -22,6 +22,13 @@ public class ClickManager : MonoBehaviour
 
     public IClickable GetSelectedEnetity() => this.selectedEntity;
 
+    /// <summary>
+    /// Give a reference to this manager to IClickables that need to be handled,
+    /// by dragging this Manager into their SerializedField in the Unity Editor (see
+    /// <see cref="ClickableEntityBehaviour"/> for more details about usage in GameObjects).
+    /// </summary>
+    /// <param name="clickedEntity">The clicked entity; its data are saved in the field
+    /// of this object. If the clicked entity was already selected, it is now deselected.</param>
     public void Notify(IClickable clickedEntity)
     {
         if (this.isAnEntitySelected && this.selectedEntity.Equals(clickedEntity))
