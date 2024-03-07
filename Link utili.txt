@@ -11,3 +11,6 @@ https://www.studytonight.com/game-development-in-2D/parenting-game-objects
 Pattern Observer in Unity:
 
 https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern
+
+Unity Tilemaps (forse utile per avere una griglia di coordinate e farci la mappa del mondo?):
+https://learn.unity.com/tutorial/introduction-to-tilemaps#
