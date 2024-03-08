@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PeasantStateManager : AbstractStateManager
 {
+    [SerializeField] GameObject waypointContainer;
+    [SerializeField] float velocity;
+
     public override void Start()
-    {   
-        Debug.Log("1");
+    {
+        WalkingState = new RegularWalkingState(waypointContainer, velocity);
         base.Start();
     }
 
-    public PeasantStateManager()
-    {
-        base.WalkingState = new RegularWalkingState(base.WaypointContainer);
-    }
 }

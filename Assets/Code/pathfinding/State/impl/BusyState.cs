@@ -11,12 +11,12 @@ public class BusyState : AbstractState
         this.timeLeft = Random.Range(MIN_WAIT_TIME, MAX_WAIT_TIME);
     }
 
-    public override void UpdateState(AbstractStateManager entity)
+    public override void UpdateState(AbstractStateManager manager)
     {
         this.timeLeft -= Time.deltaTime;
         if (this.timeLeft <= 0)
         {
-            entity.SwitchState(entity.WalkingState);
+            manager.SwitchState(manager.WalkingState);
         }
     }
 }

@@ -5,18 +5,19 @@ using UnityEngine;
 
 public class RegularWalkingState : AbstractState
 {
-    private const float velocity = 2f;
+    private float velocity;
     private const float THRESHOLD = 2f;
     private List<Transform> _waypoints;
     public List<Transform> Waypoints
     {
         get { return _waypoints; }
     }
-    private AbstractStateManager entity;
+    private AbstractStateManager manager;
     private int currentWaypointIndex;
 
-    public RegularWalkingState(GameObject waypointContainer)
+    public RegularWalkingState(GameObject waypointContainer, float velocity)
     {
+        this.velocity = velocity;
         _waypoints = waypointContainer.GetComponentsInChildren<Transform>(false).ToList();
         if (_waypoints == null || _waypoints.Count == 0)
         {
@@ -26,7 +27,7 @@ public class RegularWalkingState : AbstractState
 
     public override void OnStateEnter(AbstractStateManager entity)
     {
-        this.entity = entity;
+        this.manager = entity;
         NextWaypoint();
     }
 
@@ -44,7 +45,7 @@ public class RegularWalkingState : AbstractState
 
     private bool IsAtWaypoint()
     {
-        return Vector2.Distance(entity.transform.position, _waypoints[currentWaypointIndex].position) < THRESHOLD;
+        return Vector2.Distance(manager.transform.position, _waypoints[currentWaypointIndex].position) < THRESHOLD;
     }
 
     private void NextWaypoint()

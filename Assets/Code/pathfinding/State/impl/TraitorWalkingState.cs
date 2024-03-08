@@ -10,12 +10,15 @@ public class TraitorWalkingState : RegularWalkingState
     private int nextKillRoutineIndex = 0;
     private bool isInKillRoutine;
 
-    public TraitorWalkingState(GameObject waypointContainer, List<Transform> killWaypoints, float startRoutineChance) : base(waypointContainer)
+    public TraitorWalkingState(
+        GameObject waypointContainer,
+        float velocity,
+        List<Transform> killWaypoints,
+        float startRoutineChance) : base(waypointContainer, velocity)
     {
         this.killWaypoints = killWaypoints;
         this.startRoutineChance = startRoutineChance;
     }
-
     protected override int nextWaypointIndex()
     {
         if (!isInKillRoutine && startRoutineChance > Random.Range(0f, 1f))
