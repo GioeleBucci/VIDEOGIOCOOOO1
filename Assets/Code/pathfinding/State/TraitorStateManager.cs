@@ -7,7 +7,7 @@ public class TraitorStateManager : AbstractStateManager
 
     [SerializeField] GameObject waypointContainer;
     [SerializeField] List<Transform> killWaypoints;
-    [SerializeField] private float startRoutineChance; // = 0.3f;
+    [SerializeField] private float startRoutineChance;
 
     public override void Start()
     {

@@ -7,14 +7,18 @@ public class RegularWalkingState : AbstractState
 {
     private const float velocity = 2f;
     private const float THRESHOLD = 2f;
-    private List<Transform> waypoints;
+    private List<Transform> _waypoints;
+    public List<Transform> Waypoints
+    {
+        get { return _waypoints; }
+    }
     private AbstractStateManager entity;
     private int currentWaypointIndex;
 
     public RegularWalkingState(GameObject waypointContainer)
     {
-        waypoints = waypointContainer.GetComponentsInChildren<Transform>(false).ToList();
-        if (waypoints == null || waypoints.Count == 0)
+        _waypoints = waypointContainer.GetComponentsInChildren<Transform>(false).ToList();
+        if (_waypoints == null || _waypoints.Count == 0)
         {
             throw new ArgumentException("No waypoints container set or the container has no children.");
         }
@@ -32,7 +36,7 @@ public class RegularWalkingState : AbstractState
         {
             entity.SwitchState(entity.BusyState);
         }
-        var targetPosition = waypoints[currentWaypointIndex].position;
+        var targetPosition = _waypoints[currentWaypointIndex].position;
         entity.transform.position = Vector2.MoveTowards(entity.transform.position,
             targetPosition,
             velocity * Time.deltaTime);
@@ -40,16 +44,33 @@ public class RegularWalkingState : AbstractState
 
     private bool IsAtWaypoint()
     {
-        return Vector2.Distance(entity.transform.position, waypoints[currentWaypointIndex].position) < THRESHOLD;
+        return Vector2.Distance(entity.transform.position, _waypoints[currentWaypointIndex].position) < THRESHOLD;
     }
 
     private void NextWaypoint()
     {
         int next;
+        int counter = 0;
         do
         {
-            next = UnityEngine.Random.Range(0, waypoints.Count);
+            next = nextWaypointIndex();
+            counter++;
+            if (counter == 10)
+            {
+                Debug.LogError("INFINITE LOOP");
+                break;
+            }
         } while (next == currentWaypointIndex);
         currentWaypointIndex = next;
     }
+
+    /// <summary>
+    /// Picks the next waypoint index. By default a random waypoint is picked.
+    /// </summary>
+    /// <returns>the index of the next waypoint</returns>
+    protected virtual int nextWaypointIndex()
+    {
+        return UnityEngine.Random.Range(0, _waypoints.Count);
+    }
+
 }
