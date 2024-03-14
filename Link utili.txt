@@ -2,6 +2,8 @@ Alcune nozioni di base su componenti ed oggetti in Unity, c'è anche un discorso
 
 https://docs.unity3d.com/560/Documentation/Manual/ControllingGameObjectsComponents.html#:~:text=Linking%20objects%20together%20with%20variables,editor%20rather%20than%20at%20runtime.
 
+Unity Colliders:
+https://learn.unity.com/tutorial/applying-2d-colliders-for-physics-interactions#6000f22cedbc2a12bc0c0bad
 
 Altra guida leggera su children and parent objects in Unity:
 
@@ -14,3 +16,7 @@ https://unity.com/how-to/create-modular-and-maintainable-code-observer-pattern
 
 Unity Tilemaps (forse utile per avere una griglia di coordinate e farci la mappa del mondo?):
 https://learn.unity.com/tutorial/introduction-to-tilemaps#
+
+Unity how to get cell coordinates from a grid
+https://www.youtube.com/watch?v=l0emsAHIBjU
+https://github.com/SunnyValleyStudio/Grid-Placement-System-Unity-2022/blob/main/
