@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -28,5 +29,12 @@ public class TileMapMouseDetector : MonoBehaviour
         //Debug.Log("Mouse position: " +  mousePos);
         _tilePosition = gridLayout.WorldToCell(mousePos);
         //Debug.Log("Tile coordinates: " + TilePosition);
+    }
+
+    private void OnMouseDown()
+    {
+        // I want the tile to change colour when clicked.
+        tilemap.SetTileFlags(TilePosition, TileFlags.None); // to allow changes of colours
+        tilemap.SetColor(TilePosition, Color.cyan);
     }
 }

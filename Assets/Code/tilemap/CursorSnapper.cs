@@ -19,6 +19,5 @@ public class CursorSnapper : MonoBehaviour
     void Update()
     {
         transform.position = gridLayout.CellToWorld(detector.TilePosition);
-        transform.position.Set(transform.position.x, transform.position.y, transform.position.z - 1);
     }
 }
