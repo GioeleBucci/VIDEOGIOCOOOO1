@@ -12,7 +12,8 @@ public class TileMapMouseDetector : MonoBehaviour
     [SerializeField]
     private Tilemap tilemap;
     private GridLayout gridLayout;
-    private Vector3Int tilePosition;
+    private Vector3Int _tilePosition;
+    public Vector3Int TilePosition { get { return _tilePosition; } }
 
     void Start()
     {
@@ -24,8 +25,8 @@ public class TileMapMouseDetector : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("Mouse position: " +  mousePos);
-        tilePosition = gridLayout.WorldToCell(mousePos);
-        Debug.Log("Tile coordinates: " + tilePosition);
+        //Debug.Log("Mouse position: " +  mousePos);
+        _tilePosition = gridLayout.WorldToCell(mousePos);
+        //Debug.Log("Tile coordinates: " + TilePosition);
     }
 }
