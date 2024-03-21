@@ -18,6 +18,6 @@ public class CursorSnapper : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = gridLayout.CellToWorld(detector.TilePosition);
+        transform.position = grid.GetCellCenterWorld(detector.TilePosition);
     }
 }

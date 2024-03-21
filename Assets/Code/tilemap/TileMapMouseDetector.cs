@@ -31,10 +31,15 @@ public class TileMapMouseDetector : MonoBehaviour
         //Debug.Log("Tile coordinates: " + TilePosition);
     }
 
+    /// <summary>
+    /// Remember: for "OnMouseDown()" to work, objects need a collider.
+    /// In this case, I added a Box2DCollider to the tilemap, and set its
+    /// "IsTrigger" flag to true.
+    /// </summary>
     private void OnMouseDown()
     {
         // I want the tile to change colour when clicked.
-        tilemap.SetTileFlags(TilePosition, TileFlags.None); // to allow changes of colours
+        tilemap.SetTileFlags(TilePosition, TileFlags.None); // to allow colour changes
         tilemap.SetColor(TilePosition, Color.cyan);
     }
 }
