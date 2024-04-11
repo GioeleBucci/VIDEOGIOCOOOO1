@@ -8,11 +8,6 @@ terrain tiles should implement this interface.
 public interface IClickable
 {
     /// <summary>
-    /// Get the <see cref="Transform"/> of this clickable entity.
-    /// </summary>
-    /// <returns>The <see cref="Transform"/> of this IClickable.</returns>
-    Transform GetTransform();
-    /// <summary>
     /// Entity behaviour on selection, called by the <see cref="ClickManager"/>.
     /// </summary>
     void OnSelection();
@@ -22,5 +17,12 @@ public interface IClickable
     void OnDeselection();
 
     string GetType();
+
+    Vector2 GetPosition();
+
+    void SetPosition(Vector2 position);
+
+    void Move(Vector2 position);
+
 }
 

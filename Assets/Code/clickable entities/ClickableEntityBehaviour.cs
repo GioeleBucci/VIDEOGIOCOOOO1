@@ -12,7 +12,11 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
     /* A reference to the ClickManager, to be dragged and dropped in the Unity Editor: */
     [SerializeField] ClickManager clickManager;
     private Color originalColor; //this is needed because there is no easy way to deep copy a Color 
-    public Transform GetTransform() => this.transform;
+    //public Transform GetTransform() => this.transform;
+    private Vector2? target;
+    [SerializeField]
+    private float velocity = 5f;
+    public Vector2 Target { set { target = value; } }
 
     /// <summary>
     /// I finally understood how to make clickable objects and what went wrong before:
@@ -53,16 +57,32 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
     // Start is called before the first frame update
     void Start()
     {
+        this.target = null;
         this.originalColor = this.CopyColor(this.GetComponent<SpriteRenderer>().color);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (target.HasValue)
+        {
+            Debug.Log("haikfhah");
+            this.transform.position = Vector2.MoveTowards(this.transform.position, target.Value, velocity * Time.deltaTime);
+            if (Vector2.Distance(this.transform.position, target.Value) < .05f)
+            {
+                target = null;
+            }
+        }
     }
 
-    string IClickable.GetType()
-    {
-        return tag;
-    }
+    string IClickable.GetType() => this.tag;
+
+    public Vector2 GetPosition() => this.transform.position;
+
+    public void SetPosition(Vector2 position) => this.transform.position = position;
+
+    public void Move(Vector2 position) {
+        this.target = position;
+        Debug.Log("Target value = " + this.target);
+    } 
 }

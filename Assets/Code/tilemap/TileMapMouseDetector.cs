@@ -12,6 +12,8 @@ public class TileMapMouseDetector : MonoBehaviour
 {
     [SerializeField]
     private Tilemap tilemap;
+    [SerializeField]
+    private ClickManager clickManager;
     private GridLayout gridLayout;
     private Vector3Int _tilePosition;
     public Vector3Int TilePosition { get { return _tilePosition; } }
@@ -41,5 +43,6 @@ public class TileMapMouseDetector : MonoBehaviour
         // I want the tile to change colour when clicked.
         tilemap.SetTileFlags(TilePosition, TileFlags.None); // to allow colour changes
         tilemap.SetColor(TilePosition, Color.cyan);
+        this.clickManager.Notify(new ClickablePosition((Vector2Int)TilePosition));
     }
 }

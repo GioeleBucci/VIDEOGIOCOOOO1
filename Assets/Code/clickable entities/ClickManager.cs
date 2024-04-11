@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 /**
  This class models an object that keeps track of the last selected GameObject. 
@@ -18,7 +14,6 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Vector2 _movementVector;
     [SerializeField] private IClickable selectedEntity;
     [SerializeField] private bool isAnEntitySelected;
-    [SerializeField] private Transform clickedEntityTransform;
     [SerializeField] private Stack<IClickable> clickedEntitiesStack;
     public Vector2 MovementVector { get { return this._movementVector; } }
 
@@ -39,13 +34,13 @@ public class ClickManager : MonoBehaviour
             IClickable firstEntity = this.clickedEntitiesStack.Pop();
             IClickable secondEntity = this.clickedEntitiesStack.Pop();
             this.ManageClickedEntities(firstEntity, secondEntity);
-        } 
+        }
         else
         {
             this.Select(clickedEntity);
             Assert.IsTrue(this.clickedEntitiesStack.Count < 2);
         }
-        
+
     }
 
     private void ManageClickedEntities(IClickable first, IClickable second)
@@ -54,19 +49,23 @@ public class ClickManager : MonoBehaviour
         {
             this.Deselect().OnDeselection();
             return;
-        } 
-        else if (first.GetType().Equals("Position") && (second.GetType().Equals("Guard"))) 
+        }
+        else if (first.GetType().Equals("Position") && second.GetType().Equals("Guard"))
         {
             // manage movement
+            second.Move(first.GetPosition());
+        }
+        else
+        {
+            Deselect();
         }
     }
 
-    private void Select(IClickable clickedEntity) 
+    private void Select(IClickable clickedEntity)
     {
-        Debug.Log("Clicked at position: " + clickedEntity.GetTransform().position + ", clickedEntity.Type = " + clickedEntity.GetType());
+        Debug.Log("Clicked at position: " + clickedEntity.GetPosition() + ", clickedEntity.Type = " + clickedEntity.GetType());
         this.selectedEntity = clickedEntity;
         this.isAnEntitySelected = true;
-        this.clickedEntityTransform = clickedEntity.GetTransform();
         clickedEntity.OnSelection();
     }
 
@@ -85,6 +84,7 @@ public class ClickManager : MonoBehaviour
     void Start()
     {
         this.isAnEntitySelected = false;
+        this.clickedEntitiesStack = new();
     }
 
     // Update is called once per frame
