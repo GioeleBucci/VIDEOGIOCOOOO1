@@ -4,24 +4,39 @@ using UnityEngine;
 
 public class TraitorWalkingState : RegularWalkingState
 {
-    private GameObject waypointContainer;
     private List<Transform> killWaypoints;
     private float startRoutineChance;
 
-    public TraitorWalkingState(GameObject waypointContainer, List<Transform> killWaypoints, float startRoutineChance) : base(waypointContainer)
+    private int nextKillRoutineIndex = 0;
+    private bool isInKillRoutine;
+
+    public TraitorWalkingState(
+        GameObject waypointContainer,
+        float velocity,
+        List<Transform> killWaypoints,
+        float startRoutineChance) : base(waypointContainer, velocity)
     {
-        this.waypointContainer = waypointContainer;
         this.killWaypoints = killWaypoints;
         this.startRoutineChance = startRoutineChance;
     }
-
-    public override void OnStateEnter(AbstractStateManager entity)
+    protected override int nextWaypointIndex()
     {
-        base.OnStateEnter(entity);
-    }
-
-    public override void UpdateState(AbstractStateManager entity)
-    {
-        base.UpdateState(entity);
+        if (!isInKillRoutine && startRoutineChance > Random.Range(0f, 1f))
+        {
+            Debug.Log("Entering kill routine");
+            isInKillRoutine = true;
+        }
+        if (isInKillRoutine)
+        {
+            int index = Waypoints.IndexOf(killWaypoints[nextKillRoutineIndex++]);
+            if (nextKillRoutineIndex == killWaypoints.Count)
+            {
+                Debug.Log("Exiting kill routine");
+                isInKillRoutine = false;
+                nextKillRoutineIndex = 0;
+            }
+            return index;
+        }
+        return base.nextWaypointIndex();
     }
 }
