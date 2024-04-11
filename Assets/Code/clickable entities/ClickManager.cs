@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
@@ -14,10 +15,11 @@ public class ClickManager : MonoBehaviour
 {
     // for now movement vector should not be used, since the click manager might have to deal with
     // different entities.
-    [SerializeField] Vector2 _movementVector;
-    [SerializeField] IClickable selectedEntity;
-    [SerializeField] bool isAnEntitySelected;
-    [SerializeField] Transform clickedEntityTransform;
+    [SerializeField] private Vector2 _movementVector;
+    [SerializeField] private IClickable selectedEntity;
+    [SerializeField] private bool isAnEntitySelected;
+    [SerializeField] private Transform clickedEntityTransform;
+    [SerializeField] private Stack<IClickable> clickedEntitiesStack;
     public Vector2 MovementVector { get { return this._movementVector; } }
 
     public IClickable GetSelectedEnetity() => this.selectedEntity;
@@ -31,17 +33,36 @@ public class ClickManager : MonoBehaviour
     /// of this object. If the clicked entity was already selected, it is now deselected.</param>
     public void Notify(IClickable clickedEntity)
     {
-        // if the player clicks twice on the same entity, it should be deselected
-        if (this.isAnEntitySelected && this.selectedEntity.Equals(clickedEntity))
+        this.clickedEntitiesStack.Push(clickedEntity);
+        if (this.clickedEntitiesStack.Count == 2)
         {
-            Debug.Log("Deselected entity: " + clickedEntity);
+            IClickable firstEntity = this.clickedEntitiesStack.Pop();
+            IClickable secondEntity = this.clickedEntitiesStack.Pop();
+            this.ManageClickedEntities(firstEntity, secondEntity);
+        } 
+        else
+        {
+            this.Select(clickedEntity);
+            Assert.IsTrue(this.clickedEntitiesStack.Count < 2);
+        }
+        
+    }
+
+    private void ManageClickedEntities(IClickable first, IClickable second)
+    {
+        if (first.Equals(second))
+        {
             this.Deselect().OnDeselection();
             return;
-        } // if the player clicks on an entity while another one is already selected:
-        else if (this.isAnEntitySelected /* and the newly selected entity is not a position on the world map...*/)
+        } 
+        else if (first.GetType().Equals("Position") && (second.GetType().Equals("Guard"))) 
         {
-            this.Deselect().OnDeselection();
+            // manage movement
         }
+    }
+
+    private void Select(IClickable clickedEntity) 
+    {
         Debug.Log("Clicked at position: " + clickedEntity.GetTransform().position + ", clickedEntity.Type = " + clickedEntity.GetType());
         this.selectedEntity = clickedEntity;
         this.isAnEntitySelected = true;

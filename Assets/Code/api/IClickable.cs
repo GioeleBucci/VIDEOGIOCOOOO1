@@ -20,5 +20,7 @@ public interface IClickable
     /// Entity behaviour on deselection, called by the <see cref="ClickManager"/>.
     /// </summary>
     void OnDeselection();
+
+    string GetType();
 }
 

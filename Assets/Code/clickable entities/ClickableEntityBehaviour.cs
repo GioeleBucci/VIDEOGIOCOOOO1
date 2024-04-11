@@ -11,7 +11,7 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
 {
     /* A reference to the ClickManager, to be dragged and dropped in the Unity Editor: */
     [SerializeField] ClickManager clickManager;
-    private Color originalColor; //this is needed because there is no easy way to deep copy a Color
+    private Color originalColor; //this is needed because there is no easy way to deep copy a Color 
     public Transform GetTransform() => this.transform;
 
     /// <summary>
@@ -59,5 +59,10 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
     // Update is called once per frame
     void Update()
     {
+    }
+
+    string IClickable.GetType()
+    {
+        return tag;
     }
 }
