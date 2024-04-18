@@ -15,6 +15,10 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private IClickable selectedEntity;
     [SerializeField] private bool isAnEntitySelected;
     [SerializeField] private Stack<IClickable> clickedEntitiesStack;
+
+    // UI ELEMENTS
+    [SerializeField] private bool isContextMenuActivated = false;
+    [SerializeField] private ContextMenuBehaviour contextMenu;
     public Vector2 MovementVector { get { return this._movementVector; } }
 
     public IClickable GetSelectedEnetity() => this.selectedEntity;
@@ -78,6 +82,30 @@ public class ClickManager : MonoBehaviour
         IClickable entity = this.selectedEntity;
         this.selectedEntity = null;
         return entity;
+    }
+
+    public void HandleContextMenu()
+    {
+        if (this.isContextMenuActivated)
+        {
+            this.ActivateContextMenu();
+        }
+        else
+        {
+            this.DeactivateContextMenu();
+        }
+    }
+
+    private void ActivateContextMenu()
+    {
+        this.isContextMenuActivated = true;
+        this.contextMenu.ActivateContextMenu();
+    }
+
+    private void DeactivateContextMenu()
+    {
+        this.isContextMenuActivated = false;
+        this.contextMenu.DeactivateContextMenu();
     }
 
     // Start is called before the first frame update

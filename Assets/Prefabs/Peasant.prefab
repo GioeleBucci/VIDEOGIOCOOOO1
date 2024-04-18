@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3549307142180737875}
   - component: {fileID: 355716270039559391}
-  - component: {fileID: 2347838550164887538}
+  - component: {fileID: 5861240353479604689}
   m_Layer: 0
   m_Name: Paesant
   m_TagString: Untagged
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2347838550164887538
+--- !u!114 &5861240353479604689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3713495489425136019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c6f625981671d4da68e687f8c7a876, type: 3}
+  m_Script: {fileID: 11500000, guid: 71f7f82a859f5c141aaeeed359961c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickManager: {fileID: 0}

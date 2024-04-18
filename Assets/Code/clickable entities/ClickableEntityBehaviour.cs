@@ -10,7 +10,7 @@ in Unity: https://www.reddit.com/r/Unity3D/comments/9yg57s/what_are_some_bad_pra
 public class ClickableEntityBehaviour : MonoBehaviour, IClickable
 {
     /* A reference to the ClickManager, to be dragged and dropped in the Unity Editor: */
-    [SerializeField] ClickManager clickManager;
+    [SerializeField] private ClickManager clickManager;
     private Color originalColor; //this is needed because there is no easy way to deep copy a Color 
     //public Transform GetTransform() => this.transform;
     private Vector2? target;
@@ -36,6 +36,7 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
         Debug.Log("At least I was clicked");
         this.clickManager.Notify(this);
     }
+
 
     public void OnSelection()
     {
@@ -84,5 +85,7 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
     public void Move(Vector2 position) {
         this.target = position;
         Debug.Log("Target value = " + this.target);
-    } 
+    }
+
+    protected ClickManager GetClickManager() => this.clickManager;
 }
