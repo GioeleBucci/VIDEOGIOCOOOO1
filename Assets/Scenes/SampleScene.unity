@@ -5711,7 +5711,7 @@ PrefabInstance:
     - target: {fileID: 8320089811995507031, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
       propertyPath: clickManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 600841383}
     - target: {fileID: 9173686943935362829, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
       propertyPath: waypointContainer
       value: 
