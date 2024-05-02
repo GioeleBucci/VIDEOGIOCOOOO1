@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ExtendedClickableEntityBehaviour : ClickableEntityBehaviour, IPointerClickHandler
+public class ExtendedClickableEntityBehaviour : ClickableEntityBehaviour
 {
-    public void OnPointerClick(PointerEventData eventData)
+    /// <summary>
+    /// OnMouseDown() is only called when the left button is clicked... so
+    /// to detect right clicks I need to use an alternative method.
+    /// </summary>
+
+    public void OnMouseOver()
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        if (Input.GetMouseButtonDown(1))
         {
             this.GetClickManager().HandleContextMenu();
         }

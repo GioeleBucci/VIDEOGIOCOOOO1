@@ -5664,6 +5664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1562382070065570333, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
+      propertyPath: clickManager
+      value: 
+      objectReference: {fileID: 600841383}
     - target: {fileID: 5497597528553861417, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.0738
@@ -5709,6 +5713,10 @@ PrefabInstance:
       value: Traitor
       objectReference: {fileID: 0}
     - target: {fileID: 8320089811995507031, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
+      propertyPath: velocity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320089811995507031, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
       propertyPath: clickManager
       value: 
       objectReference: {fileID: 600841383}
@@ -5728,7 +5736,8 @@ PrefabInstance:
       propertyPath: killWaypoints.Array.data[2]
       value: 
       objectReference: {fileID: 1557163901}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8320089811995507031, guid: 74953c47ec5d1e7408108f177659c3d6, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

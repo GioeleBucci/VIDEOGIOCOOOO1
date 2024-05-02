@@ -31,7 +31,10 @@ public class ClickableEntityBehaviour : MonoBehaviour, IClickable
     /// Other interesting matters:
     /// - scripts that don't need a GameObject can inherit from ScriptableObject.  
     /// </summary>
-    public void OnMouseDown()
+ 
+    /// I just found out thanks to FraDente that in C# if you want methods with default behaviour that can
+    /// be overridden with the 'override' keyword, you need to declare them as 'virtual'
+    public virtual void OnMouseDown()
     {
         Debug.Log("At least I was clicked");
         this.clickManager.Notify(this);

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5497597528553861417}
   - component: {fileID: 2214027296141533534}
-  - component: {fileID: 8320089811995507031}
   - component: {fileID: 9173686943935362829}
   - component: {fileID: 1259180638527757671}
   - component: {fileID: 1110627144433433855}
+  - component: {fileID: 1562382070065570333}
   m_Layer: 0
   m_Name: Traitor
   m_TagString: Untagged
@@ -88,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8320089811995507031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7808306665562772725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c6f625981671d4da68e687f8c7a876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickManager: {fileID: 0}
-  velocity: 5
 --- !u!114 &9173686943935362829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,3 +179,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1562382070065570333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7808306665562772725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f7f82a859f5c141aaeeed359961c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickManager: {fileID: 0}
+  velocity: 5

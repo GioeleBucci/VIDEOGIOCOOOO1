@@ -84,9 +84,10 @@ public class ClickManager : MonoBehaviour
         return entity;
     }
 
+    // UI
     public void HandleContextMenu()
     {
-        if (this.isContextMenuActivated)
+        if (!this.isContextMenuActivated)
         {
             this.ActivateContextMenu();
         }
@@ -96,14 +97,18 @@ public class ClickManager : MonoBehaviour
         }
     }
 
+    // UI
     private void ActivateContextMenu()
     {
+        Debug.Log("Activating context menu in Click Manager");
         this.isContextMenuActivated = true;
         this.contextMenu.ActivateContextMenu();
     }
 
+    // UI
     private void DeactivateContextMenu()
     {
+        Debug.Log("Deactivating context menu in Click Manager");
         this.isContextMenuActivated = false;
         this.contextMenu.DeactivateContextMenu();
     }
