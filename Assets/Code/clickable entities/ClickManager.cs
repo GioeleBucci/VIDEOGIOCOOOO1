@@ -85,11 +85,11 @@ public class ClickManager : MonoBehaviour
     }
 
     // UI
-    public void HandleContextMenu()
+    public void HandleContextMenu(Vector2 clickedPosition)
     {
         if (!this.isContextMenuActivated)
         {
-            this.ActivateContextMenu();
+            this.ActivateContextMenu(clickedPosition);
         }
         else
         {
@@ -98,11 +98,11 @@ public class ClickManager : MonoBehaviour
     }
 
     // UI
-    private void ActivateContextMenu()
+    private void ActivateContextMenu(Vector2 c)
     {
         Debug.Log("Activating context menu in Click Manager");
         this.isContextMenuActivated = true;
-        this.contextMenu.ActivateContextMenu();
+        this.contextMenu.ActivateContextMenu(c);
     }
 
     // UI

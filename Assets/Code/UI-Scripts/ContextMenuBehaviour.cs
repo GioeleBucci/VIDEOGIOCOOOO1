@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ContextMenuBehaviour : MonoBehaviour
 {
-    public void ActivateContextMenu()
+    public void ActivateContextMenu(Vector2 c)
     {
+        this.gameObject.transform.position = c;
         this.gameObject.SetActive(true);
     }
 
