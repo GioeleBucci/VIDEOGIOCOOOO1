@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A class that must not be attached to any GameObject.
 /// It's simply a record IClickable modelling a clicked position.
-/// This class is immutable.
+/// This class is mutable.
 /// </summary>
 public class ClickablePosition : IClickable
 {
