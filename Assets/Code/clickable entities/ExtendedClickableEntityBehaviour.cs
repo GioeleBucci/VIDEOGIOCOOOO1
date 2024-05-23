@@ -14,7 +14,7 @@ public class ExtendedClickableEntityBehaviour : ClickableEntityBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.GetClickManager().HandleContextMenu(this.gameObject.transform.position);
+            this.GetClickManager().GetContextMenuUI().HandleContextMenu(this.gameObject.transform.position);
         }
     }
 }

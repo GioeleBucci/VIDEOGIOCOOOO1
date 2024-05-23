@@ -16,12 +16,12 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private bool isAnEntitySelected;
     [SerializeField] private Stack<IClickable> clickedEntitiesStack;
 
-    // UI ELEMENTS
-    [SerializeField] private bool isContextMenuActivated = false;
-    [SerializeField] private ContextMenuBehaviour contextMenu;
+    // UI that appears when right-clicking some entities
+    [SerializeField] private ContextMenuUI contextMenuUI;
+
     public Vector2 MovementVector { get { return this._movementVector; } }
 
-    public IClickable GetSelectedEnetity() => this.selectedEntity;
+    public IClickable GetSelectedEntity() => this.selectedEntity;
 
     /// <summary>
     /// Give a reference to this manager to IClickables that need to be handled,
@@ -84,45 +84,16 @@ public class ClickManager : MonoBehaviour
         return entity;
     }
 
-    // UI
-    public void HandleContextMenu(Vector2 clickedPosition)
-    {
-        if (!this.isContextMenuActivated)
-        {
-            this.ActivateContextMenu(clickedPosition);
-        }
-        else
-        {
-            this.DeactivateContextMenu();
-        }
-    }
-
-    // UI
-    private void ActivateContextMenu(Vector2 c)
-    {
-        Debug.Log("Activating context menu in Click Manager");
-        this.isContextMenuActivated = true;
-        this.contextMenu.ActivateContextMenu(c);
-    }
-
-    // UI
-    private void DeactivateContextMenu()
-    {
-        Debug.Log("Deactivating context menu in Click Manager");
-        this.isContextMenuActivated = false;
-        this.contextMenu.DeactivateContextMenu();
-    }
+    /// <summary>
+    /// Gives access to the context menu UI to entities that need it.
+    /// </summary>
+    /// <returns>The context menu UI.</returns>
+    public ContextMenuUI GetContextMenuUI() => this.contextMenuUI;
 
     // Start is called before the first frame update
     void Start()
     {
         this.isAnEntitySelected = false;
         this.clickedEntitiesStack = new();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
