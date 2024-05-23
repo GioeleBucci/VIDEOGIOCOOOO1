@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class that ensures the cursor (the square delimiting the tiles) is snapped to world
+/// coordinates.
+/// </summary>
 public class CursorSnapper : MonoBehaviour
 {
     [SerializeField]
     private TileMapMouseDetector detector;
     [SerializeField]
     private Grid grid;
-    private GridLayout gridLayout;
-    // Start is called before the first frame update
-    void Start()
-    {
-        gridLayout = grid.GetComponent<GridLayout>();
-    }
 
     // Update is called once per frame
     void Update()

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-/* TODO: piangere
- Ecco un link con alcune delle idee su quali potrebbero essere delle brutte pratiche
-in Unity: https://www.reddit.com/r/Unity3D/comments/9yg57s/what_are_some_bad_practices_to_avoid_when_using/
- */
+/// <summary>
+/// This behaviour is used by the Guards, that can move to a given target, stored
+/// in the field target.
+/// </summary>
 public class ClickableEntityBehaviour : MonoBehaviour, IClickable
 {
     /* A reference to the ClickManager, to be dragged and dropped in the Unity Editor: */

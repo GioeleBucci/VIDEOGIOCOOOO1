@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The context menu is the menu that is displayed when right-clicking on
+/// some entities.
+/// </summary>
 public class ContextMenuBehaviour : MonoBehaviour
 {
     public void ActivateContextMenu(Vector2 c)
@@ -19,11 +21,5 @@ public class ContextMenuBehaviour : MonoBehaviour
     void Start()
     {
         this.DeactivateContextMenu();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
